@@ -5,6 +5,6 @@ self.addEventListener('push', event => {
     console.log('push recieved');
 
     self.registration.showNotification(data.title, {
-        body: 'HELLO!!'
+        body: 'HELLO! I am a Push Notification'
     });
-})
+});

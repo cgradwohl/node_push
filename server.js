@@ -15,11 +15,11 @@ const private_vapid_key = process.env.PRIVATE_KEY;
 webpush.setVapidDetails('mailto:test@test.com', public_vapid_key, private_vapid_key);
 
 // simple endpoint to 
-app.post('/subscribe', (req, res) => {
+app.post('/notification', (req, res) => {
     // get subscription object from client request body
     const subscription = req.body;
 
-    // spayload to send if resource created successfully
+    // payload to send if resource created successfully
     const payload = JSON.stringify({title: "TESTING"});
 
     // pass to send notification function
