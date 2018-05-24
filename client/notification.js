@@ -5,8 +5,9 @@ if('serviceWorker' in navigator){
     /**
      * navigator is a window object that works 
      * in tandom with service workers.
+     * 
+     * onsole.log('navigator', navigator);
      */
-    // console.log('navigator', navigator);
     subscribeToNotification()
         .catch(err => console.err(err));
 }

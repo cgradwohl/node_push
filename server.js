@@ -20,7 +20,7 @@ app.post('/notification', (req, res) => {
     const subscription = req.body;
 
     // payload to send if resource created successfully
-    const payload = JSON.stringify({title: "TESTING"});
+    const payload = JSON.stringify({title: "PUSH NOTIFICATION"});
 
     // pass to send notification function
     webpush.sendNotification(subscription, payload)
