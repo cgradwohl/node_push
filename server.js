@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const webpush = require('web-push');
 const bodyParser = require('body-parser');
@@ -8,20 +9,17 @@ const app = express();
 app.use(express.static(path.join(__dirname, "client")));
 app.use(bodyParser.json());
 
-/**
- * @todo add to .env
- */
-const public_vapid_key = 'BOu7vP_sncGSLzigVgTH1XeQ6KBQb5kK24jLoB00E0VliEOWSJZDi5MvAiQxt9V68g5RjTlB3GhPOJpkP-G11es';
-const private_vapid_key = 'gS5SUKX9rIf3B8jf2vjidMzBBhKSRqxzRAXNn_3mGJs';
+const public_vapid_key = process.env.PUBLIC_KEY;
+const private_vapid_key = process.env.PRIVATE_KEY;
 
 webpush.setVapidDetails('mailto:test@test.com', public_vapid_key, private_vapid_key);
 
-
+// simple endpoint to 
 app.post('/subscribe', (req, res) => {
-    // get subscription object
+    // get subscription object from client request body
     const subscription = req.body;
 
-    // send success if resource created successfully
+    // spayload to send if resource created successfully
     const payload = JSON.stringify({title: "TESTING"});
 
     // pass to send notification function
@@ -31,5 +29,5 @@ app.post('/subscribe', (req, res) => {
         });
 });
 
-const port = 3000;
-app.listen(3000, () => console.log(`Hello creature....listening on port: ${port}`));
+
+app.listen(3000, () => console.log('Hello creature....listening on port: 3000'));
